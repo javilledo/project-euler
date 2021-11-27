@@ -10,4 +10,4 @@ group_adyacent = 13
 
 result = [product_of_digits(int(INPUT[n:n+group_adyacent])) for n in range(0, len(INPUT) - group_adyacent + 1)]
 
-print('PROBLEM 7: %d' % (max(result)))
+print('PROBLEM 8: %d' % (max(result)))
