@@ -2,28 +2,21 @@
 
 # Find the sum of all the primes below two million.
 
-max_number = 2000000
-INPUT = [i for i in range(2, max_number + 1)]
-prime_numbers_array = INPUT[:]
-prime_numbers_adding = []
+max_num = 2000000
+prime_numbers = [2]
+range_to_check = list(range(3, max_num + 1, 2))
 
-def is_prime(number):
-    is_prime = True
-    for i in range(2, number):
-        if(number % i == 0):
-            is_prime = False
-            return is_prime
-    return is_prime
+notify = 1
+for i in range_to_check:
+    for j in prime_numbers[:]:
+        prime = True
+        if(i % j == 0):
+            prime = False
+            break
+    if(prime):
+        prime_numbers.append(i)
+        notify += 1
+        if(notify % 10000 == 0): print(i)
 
-for i in INPUT:
-    if(is_prime(i)):
-        prime_numbers_adding.append(i)
-        prime_numbers_array.remove(i)
-        for j in prime_numbers_array:
-            if(j % i == 0):
-                prime_numbers_array.remove(j)
-                if(j % 1000 == 0):
-                    print(j)
-
-res = sum(prime_numbers_adding)
+res = sum(prime_numbers)
 print('PROBLEM 10: %d' % (res))
